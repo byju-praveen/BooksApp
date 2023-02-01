@@ -1,7 +1,6 @@
 package com.example.booksapp.model
 
 import android.os.Parcelable
-import com.example.booksapp.model.Items
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 

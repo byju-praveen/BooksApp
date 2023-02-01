@@ -12,7 +12,6 @@ import kotlinx.coroutines.launch
 class BookViewModel : ViewModel() {
 
     var bookListResponse:List<Items> by mutableStateOf(listOf())
-    var errorMessage: String by mutableStateOf("")
     fun getBookList(q : String = "flower") {
         viewModelScope.launch {
             val apiService = ApiService.getInstance()
@@ -22,7 +21,7 @@ class BookViewModel : ViewModel() {
                 bookListResponse = response.items
             }
             catch (e: Exception) {
-//                errorMessage = e.message.toString()
+//                errorMessage = "error"
             }
         }
     }

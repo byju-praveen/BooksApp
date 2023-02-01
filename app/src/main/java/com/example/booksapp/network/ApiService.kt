@@ -15,7 +15,7 @@ interface ApiService {
 
 
     companion object {
-        var apiService: ApiService? = null
+        private var apiService: ApiService? = null
         fun getInstance() : ApiService {
             if (apiService == null) {
                 apiService = Retrofit.Builder()
