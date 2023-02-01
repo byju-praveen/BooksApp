@@ -6,11 +6,9 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.R
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
@@ -21,9 +19,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.compose.rememberImagePainter
 import coil.request.ImageRequest
@@ -54,16 +56,13 @@ fun BookItemUI(item: Items) {
             painter = painter,
             contentDescription = "Book Image",
             modifier = Modifier
-                .size(128.dp)
+                .size(180.dp)
                 .align(alignment = Alignment.CenterVertically),
             contentScale = ContentScale.Crop
         )
         Column(modifier = Modifier
             .padding(4.dp)
-            .padding(top = 4.dp)
             .weight(.4f)
-            .border(2.dp, Color.Black)
-            .padding(vertical = 4.dp)
             .padding(horizontal = 4.dp)
 
         ) {
