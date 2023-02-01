@@ -34,7 +34,6 @@ class MainActivity : ComponentActivity() {
 
             })
             BooksAppTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
                         MainScreen(mainViewModel = mainViewModel,booksViewModel = booksViewModel )
                 }
@@ -42,7 +41,6 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
 @Composable
 fun DefaultAppBar(onSearchClicked: () -> Unit) {
     TopAppBar(
