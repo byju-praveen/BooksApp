@@ -13,11 +13,11 @@ class BookViewModel : ViewModel() {
 
     var bookListResponse:List<Items> by mutableStateOf(listOf())
     var errorMessage: String by mutableStateOf("")
-    fun getBookList() {
+    fun getBookList(q : String = "flower") {
         viewModelScope.launch {
             val apiService = ApiService.getInstance()
             try {
-                val response = apiService.getMovies("flower","1")
+                val response = apiService.getMovies(q,"1")
                 Log.d("Hello","world")
                 bookListResponse = response.items
             }
