@@ -9,11 +9,11 @@ import com.example.booksapp.model.Items
 import com.example.booksapp.network.ApiService
 import kotlinx.coroutines.launch
 
-class MovieViewModel : ViewModel() {
+class BookViewModel : ViewModel() {
 
     var bookListResponse:List<Items> by mutableStateOf(listOf())
     var errorMessage: String by mutableStateOf("")
-    fun getMovieList() {
+    fun getBookList() {
         viewModelScope.launch {
             val apiService = ApiService.getInstance()
             try {

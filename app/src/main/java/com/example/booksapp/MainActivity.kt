@@ -15,17 +15,17 @@ import androidx.compose.ui.Modifier
 import com.example.booksapp.model.Items
 import com.example.booksapp.ui.theme.BooksAppTheme
 import com.example.booksapp.view.BookItemUI
-import com.example.booksapp.viewModel.MovieViewModel
+import com.example.booksapp.viewModel.BookViewModel
 
 class MainActivity : ComponentActivity() {
 
-    val booksViewModel by viewModels<MovieViewModel>()
+    val booksViewModel by viewModels<BookViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             LaunchedEffect(key1 = Unit, block = {
-                booksViewModel.getMovieList()
+                booksViewModel.getBookList()
 
             })
             BooksAppTheme {

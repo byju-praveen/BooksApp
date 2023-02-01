@@ -35,7 +35,10 @@ class DetailsActivity : ComponentActivity() {
         setContent {
             BooksAppTheme {
                 // A surface container using the 'background' color from the theme
-                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colors.background
+                ) {
                     BookDetailsUi(item = details)
                 }
             }
@@ -46,7 +49,8 @@ class DetailsActivity : ComponentActivity() {
 
 @Composable
 fun BookDetailsUi(item: Items?) {
-    val imageURL = "https://images.unsplash.com/photo-1628373383885-4be0bc0172fa?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1301&q=80"
+    val imageURL =
+        "https://images.unsplash.com/photo-1628373383885-4be0bc0172fa?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1301&q=80"
 
     Card(
         elevation = 5.dp, modifier = Modifier
@@ -61,29 +65,34 @@ fun BookDetailsUi(item: Items?) {
         val painter =
             rememberImagePainter(data = imageURL)
 
-          Column(horizontalAlignment = Alignment.CenterHorizontally) {
-              Column() {
-                  Text(text = item?.volumeInfo?.title?:"",fontSize = 25.sp, fontWeight = FontWeight.ExtraBold,
-                      modifier = Modifier
-                          .padding(14.dp)
-                  )
-                  Image(
-                      painter = painter,
-                      contentDescription = "Book Image",
-                      modifier = Modifier
-                          .fillMaxWidth()
-                          .wrapContentHeight(),
-                      contentScale = ContentScale.FillBounds
-                  )
-              }
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Column() {
+                Text(
+                    text = item?.volumeInfo?.title ?: "",
+                    fontSize = 25.sp,
+                    fontWeight = FontWeight.ExtraBold,
+                    modifier = Modifier
+                        .padding(14.dp)
+                )
+                Image(
+                    painter = painter,
+                    contentDescription = "Book Image",
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .wrapContentHeight(),
+                    contentScale = ContentScale.FillBounds
+                )
+            }
 
-              Text(text = "Description",fontSize = 25.sp, fontWeight = FontWeight.ExtraBold,
-                  modifier = Modifier
-                      .padding(4.dp)
-                  )
+            Text(
+                text = "Description", fontSize = 25.sp, fontWeight = FontWeight.ExtraBold,
+                modifier = Modifier
+                    .padding(4.dp)
+            )
             LazyColumn() {
-                item{
-                    Text(text = item?.volumeInfo?.description ?: "",
+                item {
+                    Text(
+                        text = item?.volumeInfo?.description ?: "",
                         modifier = Modifier
                             .padding(20.dp)
                     )
