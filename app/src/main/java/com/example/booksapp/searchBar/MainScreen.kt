@@ -20,9 +20,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.booksapp.BookList
 import com.example.booksapp.viewModel.BookViewModel
+import com.example.booksapp.viewModel.SearchViewModel
 
 @Composable
-fun MainScreen(mainViewModel: MainViewModel, booksViewModel: BookViewModel ) {
+fun MainScreen(mainViewModel: SearchViewModel, booksViewModel: BookViewModel ) {
 
     val searchWidgetState by mainViewModel.searchWidgetState
     val searchTextState by mainViewModel.searchTextState
@@ -49,7 +50,6 @@ fun MainScreen(mainViewModel: MainViewModel, booksViewModel: BookViewModel ) {
         }
     ) {it
         BookList(bookList = booksViewModel.bookListResponse)
-
     }
 }
 
@@ -84,7 +84,7 @@ fun DefaultAppBar(onSearchClicked: () -> Unit) {
     TopAppBar(
         title = {
             Text(
-                text = "Home"
+                text = "BooksApp"
             )
         },
         actions = {
