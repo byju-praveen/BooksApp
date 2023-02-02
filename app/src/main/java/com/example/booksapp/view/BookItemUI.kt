@@ -1,5 +1,5 @@
-package com.example.booksapp.view
 
+package com.example.booksapp.view
 import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -24,7 +24,7 @@ import com.example.booksapp.model.Items
 fun BookItemUI(item: Items) {
 
     val author = item.volumeInfo?.authors?.first().toString()
-    val imageURL = "https://images.unsplash.com/photo-1628373383885-4be0bc0172fa?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1301&q=80"
+    val imageURL = item.volumeInfo?.imageLinks?.smallThumbnail
     val context = LocalContext.current
     val onClick = {
         context.startActivity(Intent(context, DetailsActivity::class.java).apply {
@@ -32,7 +32,7 @@ fun BookItemUI(item: Items) {
         })
     }
     val painter =
-        rememberImagePainter(data = imageURL)
+        rememberImagePainter(data = imageURL?.replace("http","https"))
 
     Row(modifier = Modifier
         .padding(4.dp)
@@ -44,7 +44,7 @@ fun BookItemUI(item: Items) {
             painter = painter,
             contentDescription = "Book Image",
             modifier = Modifier
-                .size(180.dp)
+                .size(128.dp)
                 .align(alignment = Alignment.CenterVertically),
             contentScale = ContentScale.Crop
         )
@@ -85,4 +85,3 @@ fun BookItemUI(item: Items) {
         }
     }
 }
-

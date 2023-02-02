@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
@@ -25,6 +24,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberImagePainter
+import coil.size.OriginalSize
 import com.example.booksapp.model.Items
 import com.example.booksapp.ui.theme.BooksAppTheme
 
@@ -49,8 +49,7 @@ class DetailsActivity : ComponentActivity() {
 
 @Composable
 fun BookDetailsUi(item: Items?) {
-    val imageURL =
-        "https://images.unsplash.com/photo-1628373383885-4be0bc0172fa?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1301&q=80"
+    val imageURL = item?.volumeInfo?.imageLinks?.smallThumbnail?.replace("http","https")
 
     Card(
         elevation = 5.dp, modifier = Modifier
@@ -63,7 +62,14 @@ fun BookDetailsUi(item: Items?) {
             .fillMaxWidth()
     ) {
         val painter =
-            rememberImagePainter(data = imageURL)
+            rememberImagePainter(
+                data = imageURL,
+                builder = {
+                    size(OriginalSize)
+                },
+            )
+        val imageRatio = painter.intrinsicSize.width / painter.intrinsicSize.height
+
 
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Column {
@@ -78,9 +84,8 @@ fun BookDetailsUi(item: Items?) {
                     painter = painter,
                     contentDescription = "Book Image",
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .wrapContentHeight(),
-                    contentScale = ContentScale.FillBounds
+                        .fillMaxWidth(),
+                    contentScale = ContentScale.Crop
                 )
             }
 
