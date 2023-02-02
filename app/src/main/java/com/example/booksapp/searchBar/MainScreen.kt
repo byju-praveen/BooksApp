@@ -1,8 +1,10 @@
 package com.example.booksapp.searchBar
 
 import android.util.Log
+import android.widget.ProgressBar
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
@@ -14,6 +16,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
@@ -38,8 +41,10 @@ fun MainScreen(mainViewModel: SearchViewModel, booksViewModel: BookViewModel ) {
                 },
                 onCloseClicked = {
                     mainViewModel.updateSearchWidgetState(newValue = SearchWidgetState.CLOSED)
+
                 },
                 onSearchClicked = {
+
                     Log.d("Searched Text", it)
                     booksViewModel.getBookList(it)
                 },
@@ -174,13 +179,14 @@ fun SearchAppBar(
             colors = TextFieldDefaults.textFieldColors(
                 backgroundColor = Color.Transparent,
                 cursorColor = Color.White.copy(alpha = ContentAlpha.medium)
-            ))
+            )
+        )
     }
 }
 
 
 @Composable
-@Preview
+//@Preview
 fun DefaultAppBarPreview() {
     DefaultAppBar(onSearchClicked = {})
 }

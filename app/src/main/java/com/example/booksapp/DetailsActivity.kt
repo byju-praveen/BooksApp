@@ -66,7 +66,7 @@ fun BookDetailsUi(item: Items?) {
             rememberImagePainter(data = imageURL)
 
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Column() {
+            Column {
                 Text(
                     text = item?.volumeInfo?.title ?: "",
                     fontSize = 25.sp,
@@ -89,7 +89,7 @@ fun BookDetailsUi(item: Items?) {
                 modifier = Modifier
                     .padding(4.dp)
             )
-            LazyColumn() {
+            LazyColumn {
                 item {
                     Text(
                         text = item?.volumeInfo?.description ?: "",

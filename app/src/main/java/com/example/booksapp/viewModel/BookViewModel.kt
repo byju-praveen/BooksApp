@@ -17,7 +17,7 @@ class BookViewModel : ViewModel() {
             val apiService = ApiService.getInstance()
             try {
                 val response = apiService.getMovies(q,"1")
-                Log.d("Hello","world")
+//                Log.d("Hello","world")
                 bookListResponse = response.items
             }
             catch (e: Exception) {
